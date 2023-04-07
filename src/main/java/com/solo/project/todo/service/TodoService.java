@@ -18,9 +18,7 @@ public class TodoService {
     }
 
     public Todo createTodo (Todo todo) {
-        if (todo.getTodoOrder() == 0) {
 
-        }
         return repository.save(todo);
     }
     public Todo updateTodo (Todo todo) {
@@ -28,6 +26,8 @@ public class TodoService {
 
         Optional.ofNullable(todo.getTitle())
                 .ifPresent(title -> findtodo.setTitle(title));
+        Optional.ofNullable(todo.getTodoOrder())
+                .ifPresent(order -> findtodo.setTodoOrder(order));
         if (findtodo.getCompleted() != todo.getCompleted()) {
             findtodo.setCompleted(todo.getCompleted());
         }

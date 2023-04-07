@@ -1,4 +1,4 @@
-package com.solo.project.todo;
+package com.solo.project.todo.controller;
 
 import com.solo.project.todo.dto.TodoDto;
 import com.solo.project.todo.entity.Todo;

@@ -10,10 +10,11 @@ import javax.validation.constraints.NotBlank;
 public class TodoDto {
 
     @Getter
+    @AllArgsConstructor
     public static class Post {
         @NotBlank
         private String title;
-        private int todoOrder;
+        private int order;
         private Boolean completed;
     }
 
@@ -22,7 +23,7 @@ public class TodoDto {
     public static class Patch {
         private long todoId;
         private String title;
-        private int todoOrder;
+        private int order;
         private Boolean completed;
     }
 
