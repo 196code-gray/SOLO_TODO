@@ -20,6 +20,7 @@ public class TodoDto {
 
     @Getter
     @Setter
+    @AllArgsConstructor
     public static class Patch {
         private long todoId;
         private String title;

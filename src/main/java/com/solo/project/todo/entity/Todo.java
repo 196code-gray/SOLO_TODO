@@ -1,5 +1,6 @@
 package com.solo.project.todo.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,4 +24,10 @@ public class Todo {
 
     @Column
     private Boolean completed;
+
+    public Todo(String title, int todoOrder, Boolean completed) {
+        this.title = title;
+        this.todoOrder = todoOrder;
+        this.completed = completed;
+    }
 }

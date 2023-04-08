@@ -40,3 +40,24 @@ include::{snippets}/post-todo/response-body.adoc[]
 .response-fields
 include::{snippets}/post-todo/response-fields.adoc[]
 
+=== Todo 수정
+.curl-request
+include::{snippets}/patch-todo/curl-request.adoc[]
+.http-request
+include::{snippets}/patch-todo/http-request.adoc[]
+.http-response
+include::{snippets}/patch-todo/http-response.adoc[]
+.httpie-request
+include::{snippets}/patch-todo/httpie-request.adoc[]
+.path-parameters
+include::{snippets}/patch-todo/path-parameters.adoc[]
+
+
+=== Todo 한개 조회
+
+
+=== Todo 모두 조회
+
+=== Todo 한개 삭제
+
+=== Todo 모두 삭제
