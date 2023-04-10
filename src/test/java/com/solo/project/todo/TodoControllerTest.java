@@ -19,8 +19,11 @@ import org.springframework.restdocs.payload.JsonFieldType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.ResultActions;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import static org.mockito.Mockito.doNothing;
+import static org.mockito.Mockito.mock;
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.document;
 import static com.solo.project.document.ApiDocumentUtils.*;
 
@@ -220,6 +223,100 @@ class TodoControllerTest {
                                 )
 
                                 )
+                );
+    }
+    @Test
+    public void findsTodoTest() throws Exception {
+        // given
+        ArrayList<Todo> todoList = new ArrayList<>();
+        Todo todo1 = new Todo("비타민 먹기", 1, false);
+        Todo todo2 = new Todo("운동하기", 0, true);
+        Todo todo3 = new Todo("청소하기", 3, false);
+        todo1.setTodoId(1L);
+        todo2.setTodoId(2L);
+        todo3.setTodoId(3L);
+
+        todoList.add(todo1);
+        todoList.add(todo2);
+        todoList.add(todo3);
+
+        List<TodoDto.Response> responses = new ArrayList<>(todoList.size());
+        for (Todo todo : todoList) {
+            TodoDto.Response sample = new TodoDto.Response(todo.getTodoId(), todo.getTitle(), todo.getTodoOrder(), todo.getCompleted());
+            responses.add(sample);
+        }
+
+        given(service.allTodo())
+                .willReturn(todoList);
+        given(mapper.EntityToList(Mockito.anyList()))
+                .willReturn(responses);
+
+        // when
+        ResultActions actions =
+                mockMvc.perform(get("/")
+                        .accept(MediaType.APPLICATION_JSON));
+
+        // then
+        actions
+                .andExpect(status().isOk())
+                .andDo(
+                        document("getAll-todo",
+                                getDocumentResponse()
+                        ,
+                        responseFields(
+                                List.of(
+//                                        fieldWithPath("").type(JsonFieldType.OBJECT),
+                                        fieldWithPath("[].id").type(JsonFieldType.NUMBER).description("todo 식별자"),
+                                        fieldWithPath("[].title").type(JsonFieldType.STRING).description("할 일"),
+                                        fieldWithPath("[].todoOrder").type(JsonFieldType.NUMBER).description("우선 순위"),
+                                        fieldWithPath("[].completed").type(JsonFieldType.BOOLEAN).description("완료 / 미완료")
+                                )
+                        )
+                        )
+                );
+
+    }
+    @Test
+    public void deleteAllTest() throws Exception {
+        // given
+        Todo todo1 = new Todo("삭제하기", 0, false);
+        Todo todo2 = new Todo("음악듣기", 0, false);
+        todo1.setTodoId(1L);
+        todo2.setTodoId(2L);
+
+        doNothing().when(service).allDelete();
+
+        // when
+        ResultActions actions = mockMvc.perform(delete("/"));
+
+        // then
+        actions
+                .andExpect(status().isNoContent())
+                .andDo(
+                        document("deleteAll-todo")
+                );
+
+    }
+    @Test
+    public void deleteTodoTest() throws Exception {
+        // given
+        Todo todo1 = new Todo("삭제하기", 0, false);
+        long todoId = 1L;
+        todo1.setTodoId(todoId);
+
+        doNothing().when(service).deleteOne(todoId);
+
+        // when
+        ResultActions actions = mockMvc.perform(delete("/{todoId}", todoId));
+
+        // then
+        actions
+                .andExpect(status().isNoContent())
+                .andDo(
+                        document("delete-todo",
+                                pathParameters(
+                                        parameterWithName("todoId").description("todo 식별자")
+                                ))
                 );
     }
 

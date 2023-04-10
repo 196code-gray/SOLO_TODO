@@ -1,6 +1,8 @@
 package com.solo.project.todo.service;
 
 import com.solo.project.todo.entity.Todo;
+import com.solo.project.todo.exception.BusinessException;
+import com.solo.project.todo.exception.ExceptionCode;
 import com.solo.project.todo.repository.TodoRepository;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -51,7 +53,7 @@ public class TodoService {
 
     public Todo verifiedTodo (long todoId) {
         Optional<Todo> OpTodo = repository.findById(todoId);
-        Todo findTodo = OpTodo.orElseThrow(() -> new RuntimeException());
+        Todo findTodo = OpTodo.orElseThrow(() -> new BusinessException(ExceptionCode.TODO_IS_NOT));
         return findTodo;
     }
 }

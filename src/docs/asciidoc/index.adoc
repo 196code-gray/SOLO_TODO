@@ -51,13 +51,75 @@ include::{snippets}/patch-todo/http-response.adoc[]
 include::{snippets}/patch-todo/httpie-request.adoc[]
 .path-parameters
 include::{snippets}/patch-todo/path-parameters.adoc[]
-
+.request-body
+include::{snippets}/patch-todo/request-body.adoc[]
+.response-fields
+include::{snippets}/patch-todo/request-fields.adoc[]
+.response-body
+include::{snippets}/patch-todo/response-body.adoc[]
+.response-fields
+include::{snippets}/patch-todo/response-fields.adoc[]
 
 === Todo 한개 조회
-
+.curl-request
+include::{snippets}/get-todo/curl-request.adoc[]
+http-request
+include::{snippets}/get-todo/http-request.adoc[]
+http-response
+include::{snippets}/get-todo/http-response.adoc[]
+httpie-request
+include::{snippets}/get-todo/httpie-request.adoc[]
+path-parameters
+include::{snippets}/get-todo/path-parameters.adoc[]
+request-body
+include::{snippets}/get-todo/request-body.adoc[]
+response-body
+include::{snippets}/get-todo/response-body.adoc[]
+response-fields
+include::{snippets}/get-todo/response-fields.adoc[]
 
 === Todo 모두 조회
+.curl-request
+include::{snippets}/getAll-todo/curl-request.adoc[]
+.http-request
+include::{snippets}/getAll-todo/http-request.adoc[]
+.http-response
+include::{snippets}/getAll-todo/http-response.adoc[]
+.httpie-request
+include::{snippets}/getAll-todo/httpie-request.adoc[]
+.request-body
+include::{snippets}/getAll-todo/request-body.adoc[]
+.response-body
+include::{snippets}/getAll-todo/response-body.adoc[]
+.response-fields
+include::{snippets}/getAll-todo/response-fields.adoc[]
 
 === Todo 한개 삭제
+.curl-request
+include::{snippets}/delete-todo/curl-request.adoc[]
+.http-request
+include::{snippets}/delete-todo/http-request.adoc[]
+.http-response
+include::{snippets}/delete-todo/http-response.adoc[]
+.httpie-request
+include::{snippets}/delete-todo/httpie-request.adoc[]
+.path-parameters
+include::{snippets}/delete-todo/path-parameters.adoc[]
+.request-body
+include::{snippets}/delete-todo/request-body.adoc[]
+.response-body
+include::{snippets}/delete-todo/response-body.adoc[]
 
 === Todo 모두 삭제
+.curl-request
+include::{snippets}/deleteAll-todo/curl-request.adoc[]
+.http-request
+include::{snippets}/deleteAll-todo/http-request.adoc[]
+.http-response
+include::{snippets}/deleteAll-todo/http-response.adoc[]
+.httpie-request
+include::{snippets}/deleteAll-todo/httpie-request.adoc[]
+.request-body
+include::{snippets}/deleteAll-todo/request-body.adoc[]
+.response-body
+include::{snippets}/deleteAll-todo/response-body.adoc[]
