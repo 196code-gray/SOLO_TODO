@@ -11,6 +11,7 @@ public interface TodoMapper {
     default Todo PostDtoToTodo (TodoDto.Post post) {
         Todo todo = new Todo();
 
+
         todo.setTitle(post.getTitle());
         todo.setTodoOrder(post.getOrder());
         todo.setCompleted(post.getCompleted());
